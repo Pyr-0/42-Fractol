@@ -7,7 +7,7 @@ FLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit
 
 LINK = -Imlx -Lmlx -lmlx -Llibft -lft
 SRC_PATH= src/
-SRC = fractol2.c helpers.c key_hooks.c main.c mlx_inits.c fractal_math.c color.c
+SRC = fractol2.c helpers.c key_hooks.c main.c mlx_inits.c fractal_math.c color.c input_check.c
 OBJ_PATH = obj/
 OBJ := $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
 RM = rm -f
@@ -24,7 +24,7 @@ $(LIBFT_COMB):
 	@${LIBFTMAKE}
 	@echo "$(LILA)           $(NAME) is Ready!$(NC)"
 	@echo "$(LILA)          ---------------------$(NC)"
-	@echo "$(LILA)             Libft is Ready!$(NC)$(NC)"
+	@echo "$(LILA)             Libft is Ready!$(NC) $(NC)"
 	@echo "$(LILA)            -----------------$(NC)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
