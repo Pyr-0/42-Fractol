@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/12 20:23:20 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:25:31 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,49 +44,44 @@ int		ft_inputcheck(char *str, int *error)
 	return (sign);
 }
 
+void	ft_instructions (void)
+{
+
+	ft_putstr_fd("Unfortunately your input is not valid\n"
+		"Please choose one of the following options:\n"
+		"__________________________________________\n"
+		"\n"MAGENTA"[ Mandelbrot || Julia ] \n"
+		"Sample usage: ./fractol mandelbrot or ./fractol julia -1.05 0.05 "
+		"by providing the real and imaginary part.\n"
+		"Both values should be in the range of -2 to 2.\n", 1);
+}
+
 int	read_input(int argc, char **argv, t_param *param)
 {
 	int	error;
 
 	error = 0;
-/* 	if (argc >= 4)
-		ft_instructions(); */
-	if (argc == 4)
+	
+	if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 	{
 		param->julia.real = atod(argv[2], &error);
 		param->julia.imag = atod(argv[3], &error);
 		param->fractl_type = JULIA;
-		if (error == -1)
-		{
-			printf("Error, check input!");
-			return (-1);
-		}
+		if (error == ERROR)
+			ft_error(argc, argv);
 	}
-	if (argc == 2)
+	else if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		param->fractl_type = MANDELBROT;
 	else
-		printf("instructions\n");
+		ft_error(argc, argv);
 	return (0);
 }
 
-static void	ft_instructions(void)
-{
-	printf("Unfortunately your input is not valid\n");
-	printf("Please use one of the following parameters: ");
-	printf("[mandelbrot, julia, celtic_mandelbrot, burning_ship]\n");
-	printf("Sample usage: ./fractol mandelbrot\n");
-}
 
-void	error_msg(void)
+void	ft_error(int argc, char **argv)
 {
-	printf("\033[0;31m");
-	printf("Input is not valid\n"
-		"Please choose one of the following options:\n"
-		"__________________________________________\n"
-		"\n"
-		"[ Mandelbrot, Julia, BurningShip ]\n"
-		"\n"
-		"Choose the c value for the Julia fractol "
-		"by providing the real and imaginary part.\n"
-		"Both values should be in the range of -2 to 2.\n");
+	
+	ft_instructions();
+	exit (ERROR);
+//else if (ft_strlen(argv[0]) == 5 && !ft_strncmp(argv[0], "julia", 5))
 }

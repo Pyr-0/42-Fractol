@@ -3,7 +3,7 @@ NAME = fractol
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit
+FLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit -O3
 
 LINK = -Imlx -Lmlx -lmlx -Llibft -lft
 SRC_PATH= src/
@@ -54,7 +54,7 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
- #text modifiers #
+#text modifiers #
 RED = "\e[31m"
 
 GREEN = "\e[32m"
