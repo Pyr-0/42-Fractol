@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:26:09 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/16 12:45:18 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:14:27 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,19 @@ t_complex	mandelbrot_basic(t_complex z, t_complex c)
 	result = complex_add(result, c);
 	return (result);
 }
+
+/* int	mandelbrot(t_complex c, int limit)
+{
+	int			iter;
+	t_complex	z;
+
+	z.real = c.real;
+	z.imag = c.imag;
+	iter = 0;
+	while ((z.real + z.imag <= 4) && iter < limit)
+	{
+		z = mandelbrot_basic(z, c);
+		iter++;
+	}
+	return (iter);
+} */

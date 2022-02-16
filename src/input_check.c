@@ -6,20 +6,20 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/16 18:07:35 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:28:26 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	input_check_rules(int sign_amount, int comma, char *str, int *error)
+static int	input_check_rules(int sign_amount, int comma, char *str, int i)
 {
-	int	i;
-
 	if (i > 16 || sign_amount > 1 || comma > 1 || str[i] != '\0')
-	*error = -1;
+		return (-1);
 	if (sign_amount == 1 && str[0] != '+' && str[0] != '-')
-		*error = -1;
+		return (-1);
+	else
+		return (0);
 }
 
 int	ft_inputcheck(char *str, int *error)
@@ -47,7 +47,7 @@ int	ft_inputcheck(char *str, int *error)
 			comma++;
 		i++;
 	}
-	input_check_rules(sign_amount, comma, str, error);
+	*error = input_check_rules(sign_amount, comma, str, i);
 	return (sign);
 }
 

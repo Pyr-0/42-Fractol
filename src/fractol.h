@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 17:54:52 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:50:42 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_param{
 	void		*mlx;
 	void		*win;
 	void		*img;
-	long double		zoom_factor;
+	long double	zoom_factor;
 	int			x;
 	int			y;
 	int			endian;
@@ -73,7 +73,7 @@ void		my_mlx_pixel_put(t_param *paramaters, int x, int y, int color);
 void		fractol_inits(int argc, char **argv);
 
 //=========== HELPER FUNCTIONS=======//
-long double		atod(char *str, int *error);
+double		atod(char *str, int *error);
 t_complex	complex_add(t_complex a, t_complex b);
 t_complex	complex_multiply(t_complex a, t_complex b);
 t_complex	mandelbrot_basic(t_complex z, t_complex c);

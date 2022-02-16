@@ -6,27 +6,11 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 10:00:14 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 14:33:24 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:52:29 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-/* int	mandelbrot(t_complex c, int limit)
-{
-	int			iter;
-	t_complex	z;
-
-	z.real = c.real;
-	z.imag = c.imag;
-	iter = 0;
-	while ((z.real + z.imag <= 4) && iter < limit)
-	{
-		z = mandelbrot_basic(z, c);
-		iter++;
-	}
-	return (iter);
-} */
 
 int	mandelbrot(t_complex c, int limit)
 {

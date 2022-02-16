@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:26:18 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/16 17:50:51 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:10 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	set_color_array(t_param *frctl)
 
 static int	calc_color(t_param *frctl, size_t i)
 {
-	unsigned	cs;
+	uint8_t	cs;
 	uint8_t	rgb[3];
 	double	div;
 
