@@ -7,7 +7,7 @@ FLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit -O3
 
 LINK = -Imlx -Lmlx -lmlx -Llibft -lft
 SRC_PATH= src/
-SRC = fractol2.c helpers.c key_hooks.c main.c mlx_inits.c fractal_math.c color.c input_check.c
+SRC = fractol.c helpers.c key_hooks.c main.c inits.c fractal_math.c color.c input_check.c
 OBJ_PATH = obj/
 OBJ := $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
 RM = rm -f

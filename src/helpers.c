@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 04:50:21 by kali              #+#    #+#             */
-/*   Updated: 2022/02/12 16:50:48 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:07:16 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-double	atod(char *str, int *error)
+long double	atod(char *str, int *error)
 {
-	int		sign;
-	double	result;
-	int		i;
-	double	j;
+	int				sign;
+	long double		result;
+	unsigned long	i;
+	long double		j;
 
 	sign = 1;
 	result = 0;

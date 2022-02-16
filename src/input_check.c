@@ -6,13 +6,23 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/15 19:25:31 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:07:35 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		ft_inputcheck(char *str, int *error)
+static void	input_check_rules(int sign_amount, int comma, char *str, int *error)
+{
+	int	i;
+
+	if (i > 16 || sign_amount > 1 || comma > 1 || str[i] != '\0')
+	*error = -1;
+	if (sign_amount == 1 && str[0] != '+' && str[0] != '-')
+		*error = -1;
+}
+
+int	ft_inputcheck(char *str, int *error)
 {
 	int		i;
 	int		sign_amount;
@@ -37,16 +47,12 @@ int		ft_inputcheck(char *str, int *error)
 			comma++;
 		i++;
 	}
-	if (i > 16 || sign_amount > 1 || comma > 1 || str[i] != '\0')
-		*error = -1;
-	if (sign_amount == 1 && str[0] != '+' && str[0] != '-')
-		*error = -1;
+	input_check_rules(sign_amount, comma, str, error);
 	return (sign);
 }
 
-void	ft_instructions (void)
+void	ft_instructions(void)
 {
-
 	ft_putstr_fd("Unfortunately your input is not valid\n"
 		"Please choose one of the following options:\n"
 		"__________________________________________\n"
@@ -61,7 +67,6 @@ int	read_input(int argc, char **argv, t_param *param)
 	int	error;
 
 	error = 0;
-	
 	if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 	{
 		param->julia.real = atod(argv[2], &error);
@@ -77,11 +82,8 @@ int	read_input(int argc, char **argv, t_param *param)
 	return (0);
 }
 
-
 void	ft_error(int argc, char **argv)
 {
-	
 	ft_instructions();
 	exit (ERROR);
-//else if (ft_strlen(argv[0]) == 5 && !ft_strncmp(argv[0], "julia", 5))
 }

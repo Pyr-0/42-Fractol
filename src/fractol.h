@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/15 21:59:17 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:54:52 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@
 # define RESET = "\e[0m"
 
 typedef struct s_complex{
-	double	real;
-	double	max_real;
-	double	min_real;
-	double	max_imag;
-	double	min_imag;
-	double	imag;
-	int		iter;
+	long double	real;
+	long double	max_real;
+	long double	min_real;
+	long double	max_imag;
+	long double	min_imag;
+	long double	imag;
+	long double	iter;
 }t_complex;
 
 typedef struct s_param{
 	void		*mlx;
 	void		*win;
 	void		*img;
-	double		zoom_factor;
+	long double		zoom_factor;
 	int			x;
 	int			y;
 	int			endian;
 	int			*color_scheme;
-	int 		color_shift;
+	int			color_shift;
 	int			fractl_type;
 	int			bpp;
 	int			size_line;
@@ -67,23 +67,23 @@ typedef struct s_param{
 	t_complex	zoom;
 }t_param;
 
-//=========== MLX INITS=======//
+//=========== FRACTOL INITS=======//
 int			create_trgb(int t, int r, int g, int b);
 void		my_mlx_pixel_put(t_param *paramaters, int x, int y, int color);
+void		fractol_inits(int argc, char **argv);
 
 //=========== HELPER FUNCTIONS=======//
-double		atod(char *str, int *error);
+long double		atod(char *str, int *error);
 t_complex	complex_add(t_complex a, t_complex b);
 t_complex	complex_multiply(t_complex a, t_complex b);
 t_complex	mandelbrot_basic(t_complex z, t_complex c);
 
 //===========FRACTALS=======//
-
 int			mandelbrot(t_complex c, int limit);
 int			julia(t_complex c, int limit, t_param *parameters);
-void		draw_fractol(t_param *parameters);
+void		draw_fractol(t_param *parameter, int limit);
 void		set_color(int loop_count, int limit, t_param *param);
-void		set_color_array(t_param *frctl);
+void		color_array(t_param *frctl);
 int			get_color(t_param *frctl);
 
 //===========KEY HOOKS=======//
@@ -98,6 +98,5 @@ void		set_zoom(int mousecode, int *x, int *y, t_param *param);
 int			ft_inputcheck(char *str, int *error);
 int			read_input(int argc, char **argv, t_param *param);
 void		ft_error(int argc, char **argv);
-
 
 #endif
