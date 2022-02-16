@@ -22,10 +22,10 @@ all: $(NAME)
 
 $(LIBFT_COMB):
 	@${LIBFTMAKE}
-	#@echo "$(LILA)           $(NAME) is Ready!$(NC)"
-	#@echo "$(LILA)          ---------------------$(NC)"
-	#@echo "$(LILA)             Libft is Ready!$(NC)"
-	#@echo "$(LILA)            -----------------$(NC)"
+	@echo "$(LILA)           $(NAME) is Ready!$(NC)"
+	@echo "$(LILA)          ---------------------$(NC)"
+	@echo "$(LILA)             Libft is Ready!$(NC)"
+	@echo "$(LILA)            -----------------$(NC)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) -Imlx -Ilibft -c $< -o $@
