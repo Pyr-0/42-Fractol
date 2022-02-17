@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 20:40:34 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:00:40 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # define JULIA 2
 # define ERROR -1
 
-# define WIDTH 1000
-# define HEIGHT 1000
 # define ESC 53
 # define ARROW_UP 126
 # define ARROW_DOWN 125
@@ -38,8 +36,10 @@
 # define WHEEL_DOWN 4
 # define WHEEL_UP 5
 # define MAGENTA "\e[35m"
-# define RED = "\e[41m"
-# define RESET = "\e[0m"
+# define BLUE  "\e[32m"
+# define LIGHTYELLOW "\e[93m"
+# define RED  "\e[92m"
+# define RESET  "\e[0m"
 
 typedef struct s_complex{
 	long double	real;
@@ -79,6 +79,7 @@ void		fractol_inits(int argc, char **argv);
 //=========== HELPER FUNCTIONS=======//
 double		atod(char *str, int *error);
 void		set_zoom(int mousecode, int *x, int *y, t_param *param);
+void		set_w_size(t_param **param, t_complex *scale);
 
 //===========FRACTALS=======//
 int			mandelbrot(t_complex c, int limit);

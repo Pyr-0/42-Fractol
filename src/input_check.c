@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/17 19:11:12 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:00:52 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,24 @@ int	ft_inputcheck(char *str, int *error)
 
 void	ft_instructions(void)
 {
+	ft_putstr_fd(RED, 1);
+	ft_putstr_fd("\n""Unfortunately your input is not valid\n", 1);
+	ft_putstr_fd("Please read the following instructions:", 1);
+	ft_putstr_fd("\n"MAGENTA"__________________________________________\n"
+		"[1] Enter the desired fractol type to output \n", 1);
+	ft_putstr_fd(LIGHTYELLOW"[ mandelbrot ] [ julia ] [ burning_ship] \n", 1);
+	ft_putstr_fd("\n"BLUE"Sample usage: ./fractol mandelbrot""\n", 1);
 	ft_putstr_fd(MAGENTA, 1);
-	ft_putstr_fd("Unfortunately your input is not valid\n"
-		"Please choose one of the following options:\n"
-		"__________________________________________\n"
-		"\n""[ Mandelbrot || Julia ] \n"
-		"Sample usage: ./fractol mandelbrot or ./fractol julia -0.8 -0.15 "
-		"by providing the real and imaginary part.\n"
-		"Both values should be in the range of -2 to 2.\n", 1);
+	ft_putstr_fd("\n""[2]For Julia Fractol select 2 starting values \n", 1);
+	ft_putstr_fd(BLUE, 1);
+	ft_putstr_fd("\n""Sample usage: ./fractol julia -0.8 -0.15 \n", 1);
+	ft_putstr_fd(RESET"For more Julia sets check in file: julia.txt\n", 1);
+	ft_putstr_fd(MAGENTA, 1);
+	ft_putstr_fd("\n""[3] KEY CONTROLS \n", 1);
+	ft_putstr_fd(RED"[ MOUSE WEEL ]"RESET"-> Controls Zoom \n", 1);
+	ft_putstr_fd(RED"[ KEYS UP/DOWN ]"RESET"-> Controls Iterations \n", 1);
+	ft_putstr_fd(RED"[ SPACE BAR ]"RESET"-> Controls Color Shift \n", 1);
+	ft_putstr_fd("\n"MAGENTA"     ----- HAVE FUN!-----:)  \n", 1);
 }
 
 int	read_input(int argc, char **argv, t_param *param)

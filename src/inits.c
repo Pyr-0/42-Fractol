@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 04:41:17 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 20:28:26 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:33:45 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fractol_inits(int argc, char **argv)
 	t_param	param;
 	int		limit;
 
-	param.max_iter = 40;
+	param.max_iter = 20;
 	param.color_shift = 0;
 	param.zoom.max_real = 2;
 	param.zoom.max_imag = 2;
