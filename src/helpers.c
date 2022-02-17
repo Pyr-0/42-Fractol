@@ -6,12 +6,11 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 04:50:21 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 16:31:19 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:40:23 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 void	set_zoom(int mousecode, int *x, int *y, t_param *param)
 {
@@ -69,4 +68,39 @@ double	atod(char *str, int *error)
 		j++;
 	}
 	return ((result * pow(0.1, j)) * sign);
+}
+
+static void	set_w_size(t_param **param, t_complex *scale)
+{
+	scale->real = ((*param)->zoom.max_real - (*param)->zoom.min_real) / WIDTH;
+	scale->imag = ((*param)->zoom.max_imag - (*param)->zoom.min_imag) / HEIGHT;
+}
+
+void	draw_fractol(t_param *param, int limit)
+{
+	int			loop_count;
+	t_complex	parts;
+	t_complex	scale;
+
+	set_w_size(&param, &scale);
+	param->y = 0;
+	while (param->y < HEIGHT)
+	{
+		parts.imag = param->zoom.max_imag - param->y * scale.imag;
+		param->x = 0;
+		while (param->x < WIDTH)
+		{
+			parts.real = param->zoom.min_real + param->x * scale.real;
+			if (param->fractl_type == JULIA)
+				loop_count = julia(parts, param->max_iter, param);
+			else if (param->fractl_type == BURNINGSHIP)
+				loop_count = burning_ship(parts, param->max_iter);
+			else
+				loop_count = mandelbrot(parts, param->max_iter);
+			set_color(loop_count, param->max_iter, param);
+			param->x++;
+		}
+		param->y++;
+	}
+	mlx_put_image_to_window(param->mlx, param->win, param->img, 0, 0);
 }

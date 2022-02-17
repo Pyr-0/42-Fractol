@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 17:43:04 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:40:34 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		set_zoom(int mousecode, int *x, int *y, t_param *param);
 int			mandelbrot(t_complex c, int limit);
 int			julia(t_complex c, int limit, t_param *parameters);
 void		draw_fractol(t_param *parameter, int limit);
-void		set_color(int loop_count, t_param *param);
+void		set_color(int loop_count, int limit, t_param *param);
 void		color_array(t_param *frctl);
 void		color_shift(t_param *frctl);
 
@@ -93,10 +93,7 @@ void		color_shift(t_param *frctl);
 int			ft_close(int key, t_param *parameters);
 int			ft_exit(t_param *param);
 int			mouse_hook(int mousecode, int x, int y, t_param *param);
-/* void		move(int key, t_complex *frctl); */
-void		move(int key, t_param *frctl);
 int			key_actions(int key, t_param *param, t_complex *frctl);
-
 
 //===========INPUT CHECK=======//
 

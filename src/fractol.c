@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 10:00:14 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 17:57:38 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:39:03 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,38 +76,4 @@ int	burning_ship(t_complex c, int limit)
 		iter++;
 	}
 	return (iter);
-}
-
-void	assignment_trick(size_t *v1, int *v2, int value)
-{
-	*v1 = value;
-	*v2 = value;
-
-	
-}
-
-void	draw_fractol(t_param *param, int limit)
-{
-	int			loop_count;
-	t_complex	parts;
-	t_complex	scale;
-
-	assignment_trick(&param->max_iter, &limit, 50);
-	scale.real = (param->zoom.max_real - param->zoom.min_real) / WIDTH;
-	scale.imag = (param->zoom.max_imag - param->zoom.min_imag) / HEIGHT;
-	param->y = 0;
-	while (param->y < HEIGHT)
-	{
-		parts.imag = param->zoom.max_imag - param->y * scale.imag;
-		param->x = 0;
-		while (param->x < WIDTH)
-		{
-			parts.real = param->zoom.min_real + param->x * scale.real;
-			select_fractal(param, limit);
-			set_color(loop_count, param);
-			param->x++;
-		}
-		param->y++;
-	}
-	mlx_put_image_to_window(param->mlx, param->win, param->img, 0, 0);
 }

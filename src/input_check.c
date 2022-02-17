@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/17 14:10:28 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:11:12 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ int	ft_inputcheck(char *str, int *error)
 
 void	ft_instructions(void)
 {
+	ft_putstr_fd(MAGENTA, 1);
 	ft_putstr_fd("Unfortunately your input is not valid\n"
 		"Please choose one of the following options:\n"
 		"__________________________________________\n"
-		"\n"MAGENTA"[ Mandelbrot || Julia ] \n"
-		"Sample usage: ./fractol mandelbrot or ./fractol julia -1.05 0.05 "
+		"\n""[ Mandelbrot || Julia ] \n"
+		"Sample usage: ./fractol mandelbrot or ./fractol julia -0.8 -0.15 "
 		"by providing the real and imaginary part.\n"
 		"Both values should be in the range of -2 to 2.\n", 1);
 }
