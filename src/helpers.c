@@ -6,11 +6,34 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 04:50:21 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 18:51:12 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:31:19 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+
+void	set_zoom(int mousecode, int *x, int *y, t_param *param)
+{
+	double	zoom;
+	double	r_pos;
+	double	i_pos;
+	int		limit;
+
+	if (mousecode == WHEEL_DOWN)
+		zoom = 0.833;
+	if (mousecode == WHEEL_UP)
+		zoom = 1.2;
+	r_pos = param->zoom.min_real + (double) *x / (WIDTH - 1)
+		* (param->zoom.max_real - param->zoom.min_real);
+	i_pos = param->zoom.max_imag - (double) *y / (HEIGHT - 1)
+		* (param->zoom.max_imag - param->zoom.min_imag);
+	param->zoom.max_real = r_pos + (param->zoom.max_real - r_pos) * zoom;
+	param->zoom.min_real = r_pos + (param->zoom.min_real - r_pos) * zoom;
+	param->zoom.max_imag = i_pos + (param->zoom.max_imag - i_pos) * zoom;
+	param->zoom.min_imag = i_pos + (param->zoom.min_imag - i_pos) * zoom;
+	draw_fractol(param, limit);
+}
 
 int	ft_isspace(char c)
 {

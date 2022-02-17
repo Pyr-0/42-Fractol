@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 18:50:42 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:43:04 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,21 @@
 
 # define WIDTH 1000
 # define HEIGHT 1000
-# define MANDELBROT	1
-# define JULIA	2
+# define MANDELBROT 1
+# define BURNINGSHIP 3
+# define JULIA 2
 # define ERROR -1
 
 # define WIDTH 1000
-# define HEIGHT 1000 
+# define HEIGHT 1000
 # define ESC 53
-# define UP_KEY 126
-# define DOWN_KEY 125
+# define ARROW_UP 126
+# define ARROW_DOWN 125
+# define ARROW_RIGHT 124
+# define ARROW_LEFT 123
+# define SPACE 49
 # define WHEEL_DOWN 4
-# define WHEEL_UP 5 
+# define WHEEL_UP 5
 # define MAGENTA "\e[35m"
 # define RED = "\e[41m"
 # define RESET = "\e[0m"
@@ -55,7 +59,7 @@ typedef struct s_param{
 	int			x;
 	int			y;
 	int			endian;
-	int			*color_scheme;
+	uint8_t		*color_scheme;
 	int			color_shift;
 	int			fractl_type;
 	int			bpp;
@@ -74,24 +78,25 @@ void		fractol_inits(int argc, char **argv);
 
 //=========== HELPER FUNCTIONS=======//
 double		atod(char *str, int *error);
-t_complex	complex_add(t_complex a, t_complex b);
-t_complex	complex_multiply(t_complex a, t_complex b);
-t_complex	mandelbrot_basic(t_complex z, t_complex c);
+void		set_zoom(int mousecode, int *x, int *y, t_param *param);
 
 //===========FRACTALS=======//
 int			mandelbrot(t_complex c, int limit);
 int			julia(t_complex c, int limit, t_param *parameters);
 void		draw_fractol(t_param *parameter, int limit);
-void		set_color(int loop_count, int limit, t_param *param);
+void		set_color(int loop_count, t_param *param);
 void		color_array(t_param *frctl);
-int			get_color(t_param *frctl);
+void		color_shift(t_param *frctl);
 
 //===========KEY HOOKS=======//
 
 int			ft_close(int key, t_param *parameters);
 int			ft_exit(t_param *param);
 int			mouse_hook(int mousecode, int x, int y, t_param *param);
-void		set_zoom(int mousecode, int *x, int *y, t_param *param);
+/* void		move(int key, t_complex *frctl); */
+void		move(int key, t_param *frctl);
+int			key_actions(int key, t_param *param, t_complex *frctl);
+
 
 //===========INPUT CHECK=======//
 

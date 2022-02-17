@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:26:18 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/16 18:11:10 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:34:18 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	calc_color(t_param *frctl, size_t i);
 
-int	get_color(t_param *frctl)
+/* int	get_color(t_param *frctl)
 {
 	return (frctl->color_scheme[frctl->iter]);
 }
-
+ */
 void	set_color_array(t_param *frctl)
 {
 	size_t	i;
@@ -29,6 +29,14 @@ void	set_color_array(t_param *frctl)
 		frctl->color_scheme[i] = calc_color(frctl, i);
 		i++;
 	}
+	
+}
+
+void	color_shift(t_param *frctl)
+{
+	frctl->color_shift = (frctl->color_shift + 1) % 6;
+	set_color_array(frctl);
+
 }
 
 static int	calc_color(t_param *frctl, size_t i)
@@ -55,7 +63,7 @@ static int	calc_color(t_param *frctl, size_t i)
 	return (0 << 24 | rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 
-void	set_color(int loop_count, int limit, t_param *param)
+void	set_color(int loop_count, t_param *param)
 {
 	my_mlx_pixel_put(param, param->x, param->y, calc_color(param, loop_count));
 }

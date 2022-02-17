@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 10:00:14 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 18:52:29 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:57:38 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,34 @@ int	julia(t_complex c, int limit, t_param *param)
 	return (iter);
 }
 
+int	burning_ship(t_complex c, int limit)
+{
+	int			iter;
+	t_complex	z;
+	t_complex	tmp;
+
+	z.real = c.real;
+	z.imag = c.imag;
+	tmp.real = z.real * z.real;
+	tmp.imag = z.imag * z.imag;
+	iter = 0;
+	while ((tmp.real + tmp.imag <= 4) && iter < limit)
+	{
+		z.imag = -2 * fabsl(z.real * z.imag) + c.imag;
+		z.real = tmp.real - tmp.imag + c.real;
+		tmp.real = z.real * z.real;
+		tmp.imag = z.imag * z.imag;
+		iter++;
+	}
+	return (iter);
+}
+
 void	assignment_trick(size_t *v1, int *v2, int value)
 {
 	*v1 = value;
 	*v2 = value;
+
+	
 }
 
 void	draw_fractol(t_param *param, int limit)
@@ -79,11 +103,8 @@ void	draw_fractol(t_param *param, int limit)
 		while (param->x < WIDTH)
 		{
 			parts.real = param->zoom.min_real + param->x * scale.real;
-			if (param->fractl_type == JULIA)
-				loop_count = julia(parts, limit, param);
-			else
-				loop_count = mandelbrot(parts, limit);
-			set_color(loop_count, limit, param);
+			select_fractal(param, limit);
+			set_color(loop_count, param);
 			param->x++;
 		}
 		param->y++;

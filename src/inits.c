@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 04:41:17 by kali              #+#    #+#             */
-/*   Updated: 2022/02/16 13:53:09 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:26:43 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	fractol_inits(int argc, char **argv)
 	t_param	param;
 	int		limit;
 
+	param.color_shift = 0;
 	param.zoom.max_real = 2;
 	param.zoom.max_imag = 2;
 	param.zoom.min_real = -2;
@@ -42,8 +43,8 @@ void	fractol_inits(int argc, char **argv)
 			&(param.size_line), &(param.endian));
 	draw_fractol(&param, limit);
 	mlx_mouse_hook(param.win, mouse_hook, &param);
-	mlx_hook(param.win, 17, 0, ft_exit, &param);
-	mlx_key_hook(param.win, ft_close, &param);
+	mlx_hook(param.win, 17, 0, &ft_exit, &param);
+	mlx_key_hook(param.win, &key_actions, &param);
 	mlx_loop(param.mlx);
 	exit (0);
 }

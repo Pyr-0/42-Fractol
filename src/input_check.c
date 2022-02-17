@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:49:00 by mrojas-e          #+#    #+#             */
-/*   Updated: 2022/02/16 18:28:26 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:10:28 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	read_input(int argc, char **argv, t_param *param)
 		if (error == ERROR)
 			ft_error(argc, argv);
 	}
+	else if (argc == 2 && !ft_strncmp(argv[1], "burning_ship", 12))
+		param->fractl_type = BURNINGSHIP;
 	else if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		param->fractl_type = MANDELBROT;
 	else
