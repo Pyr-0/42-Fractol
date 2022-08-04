@@ -6,7 +6,7 @@
 /*   By: mrojas-e <mrojas-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:28:13 by kali              #+#    #+#             */
-/*   Updated: 2022/02/17 23:00:40 by mrojas-e         ###   ########.fr       */
+/*   Updated: 2022/02/19 20:01:09 by mrojas-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define WHEEL_UP 5
 # define MAGENTA "\e[35m"
 # define BLUE  "\e[32m"
-# define LIGHTYELLOW "\e[93m"
+# define YELLOW "\e[93m"
 # define RED  "\e[92m"
 # define RESET  "\e[0m"
 

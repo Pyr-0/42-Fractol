@@ -16,7 +16,7 @@ LIBFT_LIB = libft.a
 LIBFT_PATH = libft/
 LIBFT_COMB = $(LIBFT_PATH)$(LIBFT_LIB)
 LIBFT_OBJS = ${LIBFT_PATH}*.o
-LIBFTMAKE = $(MAKE) -silentx -C ${LIBFT_PATH}
+LIBFTMAKE = $(MAKE) -C ${LIBFT_PATH}
 MLX_COMB = mlx/libmlx.a
 
 all: $(NAME)
@@ -46,7 +46,7 @@ fclean: clean
 	@printf $(RED)"            FULL CLEAN COMPLETED!\n$(NC)"
 
 re: fclean all
-	@make -silent -C ./mlx
+	@make  -C ./mlx
 
 .PHONY: all clean fclean re
 
